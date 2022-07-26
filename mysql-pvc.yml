@@ -32,7 +32,7 @@ spec:
         version: v1.0
     spec:
       containers:
-        - image: mysql:8.0
+        - image: practicek8s.jfrog.io/docker-practice-docker-local/mysql:5.7
           name: mysqlpvc
           env:
             - name: MYSQL_ROOT_PASSWORD
@@ -48,6 +48,8 @@ spec:
               mountPath: /var/lib/mysql
           ports:
             - containerPort: 3306
+      imagePullSecrets:
+        - name: artregcred 
       volumes:
         - name: mysqldbdefault
           persistentVolumeClaim:
